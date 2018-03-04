@@ -14,8 +14,7 @@ int main() {
         std::cout << "Type a row (1, 2 or 3), and a column (1, 2 or 3)." << std::endl;
         board.addMove();
         board.drawBoard();
-        std::cout << "Bot is thinking..." << std::endl;
-        sleep(2);
+        board.botThink();
         decision = "NULL";
   /*    }     */
     } else {

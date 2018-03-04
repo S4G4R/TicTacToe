@@ -68,6 +68,21 @@ void ticTac::addMove() {
   }
 }
 
+void ticTac::botThink() {
+  std::cout << "Bot is thinking";
+  std::cout.flush();
+  usleep(500000);
+  std::cout << '.';
+  std::cout.flush();
+  usleep(500000);
+  std::cout << '.';
+  std::cout.flush();
+  usleep(500000);
+  std::cout << '.' << std::endl;
+  std::cout.flush();
+  sleep(2);
+}
+
 ticTac::~ticTac() {
 
 }

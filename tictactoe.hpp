@@ -26,6 +26,7 @@ public:
   void addMove();
   void printGreeting();
   void userSelection();
+  void botThink();
   void drawBoard();
   ~ticTac();
 };
