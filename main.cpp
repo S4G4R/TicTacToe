@@ -16,11 +16,11 @@ int main() {
         board.drawBoard();
         board.botThink();
         decision = "NULL";
-  /*    }     */
     } else {
       std::cout << "Bot plays first! Good luck." << '\n';
       decision = "NULL";
     }
+  /*    }     */
   }
   return 0;
 }
