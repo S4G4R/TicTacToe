@@ -1,16 +1,7 @@
 #ifndef TIC_TAC_TOE
 #define TIC_TAC_TOE
 
-#ifdef _WIN32
-  #include <windows.h>
-#else
-  #include <unistd.h>
-#endif
-
-#include <iostream>
 #include <string>
-#include <cstdlib>
-#include <stdlib.h>
 
 class ticTac {
 private:
