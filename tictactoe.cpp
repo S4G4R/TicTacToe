@@ -32,6 +32,8 @@ void ticTac::userSelection() {
     bot='O';
     pickStart=0;
   } else {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "Wrong Selection. Try again." << std::endl;
     userSelection();
   }
@@ -67,6 +69,8 @@ void ticTac::addMove() {
   if ((x==1 || x==2 || x==3) && (y==1 || y==2 || y==3)) {
     board[x-1][y-1]=user;
   } else {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     std::cout << "Please enter a correct row and column!" << std::endl;
     addMove();
   }
