@@ -63,6 +63,7 @@ void ticTac::drawBoard() {
 }
 
 void ticTac::userMove() {
+  std::cout << "Type a row (1, 2 or 3), and a column (1, 2 or 3)." << std::endl;
   int x, y;
   std::cin >> x;
   std::cin >> y;
