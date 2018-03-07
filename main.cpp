@@ -13,7 +13,6 @@ int main() {
   /*    while( Add win condition here ) {  */
         board.userMove();
         board.drawBoard();
-//        board.userMove();
         board.botThink();
         decision = "NULL";
     } else {
