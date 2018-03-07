@@ -67,6 +67,7 @@ void ticTac::addMove() {
   std::cin >> x;
   std::cin >> y;
   if ((x==1 || x==2 || x==3) && (y==1 || y==2 || y==3)) {
+    checkFull(x,y);
     board[x-1][y-1]=user;
   } else {
     std::cin.clear();
@@ -89,6 +90,15 @@ void ticTac::botThink() {
   std::cout << '.' << std::endl;
   std::cout.flush();
   sleep(2);
+}
+
+void ticTac::checkFull(int x, int y) {
+  if(board[x-1][y-1] != " ") {
+    std::cout << "That position is already filled. Please try again." << std::endl;
+    addMove();
+  } else {
+    return;
+  }
 }
 
 ticTac::~ticTac() {
