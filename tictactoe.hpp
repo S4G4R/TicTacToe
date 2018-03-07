@@ -18,6 +18,7 @@ public:
   void printGreeting();
   void userSelection();
   void botThink();
+  void checkFull(int,int);
   void drawBoard();
   ~ticTac();
 };
