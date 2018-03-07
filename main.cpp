@@ -11,9 +11,9 @@ int main() {
       std::cout << "You play first! Good luck." << '\n';
       board.drawBoard();
   /*    while( Add win condition here ) {  */
-        std::cout << "Type a row (1, 2 or 3), and a column (1, 2 or 3)." << std::endl;
         board.userMove();
         board.drawBoard();
+//        board.userMove();
         board.botThink();
         decision = "NULL";
     } else {
