@@ -14,7 +14,7 @@ public:
   ticTac();
   int getStart();
   void initBoard();
-  void addMove();
+  void userMove();
   void printGreeting();
   void userSelection();
   void botThink();

@@ -12,7 +12,7 @@ int main() {
       board.drawBoard();
   /*    while( Add win condition here ) {  */
         std::cout << "Type a row (1, 2 or 3), and a column (1, 2 or 3)." << std::endl;
-        board.addMove();
+        board.userMove();
         board.drawBoard();
         board.botThink();
         decision = "NULL";

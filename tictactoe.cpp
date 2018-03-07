@@ -62,7 +62,7 @@ void ticTac::drawBoard() {
   std::cout << std::endl;
 }
 
-void ticTac::addMove() {
+void ticTac::userMove() {
   int x, y;
   std::cin >> x;
   std::cin >> y;
@@ -73,7 +73,7 @@ void ticTac::addMove() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     std::cout << "Please enter a correct row and column!" << std::endl;
-    addMove();
+    userMove();
   }
 }
 
@@ -95,7 +95,7 @@ void ticTac::botThink() {
 void ticTac::checkFull(int x, int y) {
   if(board[x-1][y-1] != " ") {
     std::cout << "That position is already filled. Please try again." << std::endl;
-    addMove();
+    userMove();
   } else {
     return;
   }
