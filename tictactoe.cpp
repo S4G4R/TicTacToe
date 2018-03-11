@@ -182,6 +182,24 @@ bool ticTac::boardFull() {
   }
 }
 
+void ticTac::showResult() {
+  if (winner==user) {
+    std::cout << "You win! Congratulations." << std::endl;
+  } else if (winner==bot) {
+    std::cout << "Bot wins! Better luck next time." << std::endl;
+  } else {
+    std::cout << "It's a draw!" << std::endl;
+  }
+}
+
+void ticTac::resetBoard() {
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      board[i][j] = " ";
+    }
+  }
+}
+
 int ticTac::getLastX() {
   return x_lastplay;
 }

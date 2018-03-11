@@ -28,6 +28,8 @@ public:
   bool winCondition();
   void drawBoard();
   bool boardFull();
+  void showResult();
+  void resetBoard();
   ~ticTac();
 };
 
