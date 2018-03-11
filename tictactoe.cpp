@@ -8,8 +8,8 @@ ticTac::ticTac() {
 }
 
 void ticTac::initBoard() {
-  for (size_t i = 0; i < 3; i++) {
-    for (size_t j = 0; j < 3; j++) {
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
       board[i][j]=" ";
     }
   }
@@ -43,10 +43,10 @@ int ticTac::getStart() {
 }
 
 void ticTac::drawBoard() {
-  for (size_t i = 0; i < 3; i++) {
+  for (int i = 0; i < 3; i++) {
     std::cout << " --- --- --- " << std::endl;
       std::cout << "| ";
-    for (size_t j = 0; j < 3; j++) {
+    for (int j = 0; j < 3; j++) {
       if (j==2) {
         std::cout << board[i][j] << " |" ;
         continue;
@@ -153,6 +153,22 @@ bool ticTac::winCondition() {
   } else if (board[0][0]==board[1][1] && board[0][0]==board[2][2] && board[0][0]!=" ") {
     return true;
   } else if (board[0][2]==board[1][1] && board[0][2]==board[2][0] && board[0][2]!=" ") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool ticTac::boardFull() {
+  int count=0;
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (board[i][j]!=" ") {
+        count++;
+      }
+    }
+  }
+  if (count==9) {
     return true;
   } else {
     return false;

@@ -26,6 +26,7 @@ public:
   void checkFull(int,int);
   bool winCondition();
   void drawBoard();
+  bool boardFull();
   ~ticTac();
 };
 

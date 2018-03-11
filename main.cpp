@@ -12,7 +12,7 @@ int main() {
     if (board.getStart()) {
       std::cout << "You play first! Good luck." << '\n';
       board.drawBoard();
-//      while(!board.winCondition()) {
+//      while(!board.winCondition() && !board.boardFull()) {
         board.userMove();
         board.drawBoard();
         board.botThink();
@@ -22,7 +22,7 @@ int main() {
 //      }
     } else {
        std::cout << "Bot plays first! Good luck." << '\n';
-//       while(!board.winCondition()) {
+//       while(!board.winCondition() && !board.boardFull()) {
          board.drawBoard();
          board.botThink();
          board.botMove();
