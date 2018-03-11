@@ -16,6 +16,8 @@ int main() {
         board.userMove();
         board.drawBoard();
         board.botThink();
+        board.botMove(board.getLastX(),board.getLastY());
+        board.drawBoard();
         decision = "NULL";
     } else {
       std::cout << "Bot plays first! Good luck." << '\n';
