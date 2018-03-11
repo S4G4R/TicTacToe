@@ -120,8 +120,7 @@ void ticTac::randomPick() {
 void ticTac::botMove() {
   int row=getLastX();
   int col=getLastY();
-  std::cout << row << ' ' << col << '\n';
-    if(board[1][1] == " ") {
+  if(board[1][1] == " ") {
     board[1][1]=bot;
   } else if ((col+1)<3 && board[row][col+1] == " ") {
     board[row][col+1]=bot;
@@ -139,20 +138,28 @@ void ticTac::botMove() {
 
 bool ticTac::winCondition() {
   if (board[0][0]==board[0][1] && board[0][0]==board[0][2] && board[0][0]!=" ") {
+    winner=board[0][0];
     return true;
   } else if (board[1][0]==board[1][1] && board[1][0]==board[1][2] && board[1][0]!=" ") {
+    winner=board[1][0];
     return true;
   } else if (board[2][0]==board[2][1] && board[2][0]==board[2][2] && board[2][0]!=" ") {
+    winner=board[2][0];
     return true;
   } else if (board[0][0]==board[1][0] && board[0][0]==board[2][0] && board[0][0]!=" ") {
+    winner=board[0][0];
     return true;
-  } else if (board[0][1]==board[1][1] && board[0][1]==board[1][2] && board[0][1]!=" ") {
+  } else if (board[0][1]==board[1][1] && board[0][1]==board[2][1] && board[0][1]!=" ") {
+    winner=board[0][1];
     return true;
   } else if (board[0][2]==board[1][2] && board[0][2]==board[2][2] && board[0][2]!=" ") {
+    winner=board[0][2];
     return true;
   } else if (board[0][0]==board[1][1] && board[0][0]==board[2][2] && board[0][0]!=" ") {
+    winner=board[0][0];
     return true;
   } else if (board[0][2]==board[1][1] && board[0][2]==board[2][0] && board[0][2]!=" ") {
+    winner=board[0][2];
     return true;
   } else {
     return false;
