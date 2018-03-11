@@ -1,7 +1,6 @@
 #include "tictactoe.hpp"
-#include <cstdlib>
-#include <stdlib.h>
 #include <unistd.h>
+#include <random>
 #include <iostream>
 
 ticTac::ticTac() {
@@ -70,6 +69,8 @@ void ticTac::userMove() {
   if ((x==1 || x==2 || x==3) && (y==1 || y==2 || y==3)) {
     checkFull(x,y);
     board[x-1][y-1]=user;
+    x_lastplay=x-1;
+    y_lastplay=y-1;
   } else {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
@@ -100,6 +101,46 @@ void ticTac::checkFull(int x, int y) {
   } else {
     return;
   }
+}
+
+void ticTac::randomPick() {
+  std::random_device random_device;
+  std::mt19937 engine{random_device()};
+  std::uniform_int_distribution<> dist(0,2);
+  int i = dist(engine);
+	int j = dist(engine);
+  if(board[i][j]==" ") {
+    board[i][j]=bot;
+    return;
+  } else {
+    randomPick();
+  }
+}
+
+void ticTac::botMove(int x_lastplay, int y_lastplay) {
+  int row=x_lastplay, col=y_lastplay;
+    if(board[1][1] == " ") {
+    board[1][1]=bot;
+  } else if ((col+1)<3 && board[row][col+1] == " ") {
+    board[row][col+1]=bot;
+  } else if ((col-1)>=0 && board[row][col-1] == " ") {
+    board[row][col-1]=bot;
+  } else if ((row-1)>=0 && board[row-1][col] == " ") {
+    board[row-1][col]=bot;
+  } else if ((row+1)<3 && board[row+1][col] == " ") {
+    board[row+1][col]=bot;
+  } else {
+    randomPick();
+  }
+  return;
+}
+
+int ticTac::getLastX() {
+  return x_lastplay;
+}
+
+int ticTac::getLastY() {
+  return y_lastplay;
 }
 
 ticTac::~ticTac() {
