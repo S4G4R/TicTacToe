@@ -12,18 +12,25 @@ int main() {
     if (board.getStart()) {
       std::cout << "You play first! Good luck." << '\n';
       board.drawBoard();
-  /*    while( Add win condition here ) {  */
+//      while(!board.winCondition()) {
         board.userMove();
         board.drawBoard();
         board.botThink();
-        board.botMove(board.getLastX(),board.getLastY());
+        board.botMove();
         board.drawBoard();
         decision = "NULL";
+//      }
     } else {
-      std::cout << "Bot plays first! Good luck." << '\n';
-      decision = "NULL";
+       std::cout << "Bot plays first! Good luck." << '\n';
+//       while(!board.winCondition()) {
+         board.drawBoard();
+         board.botThink();
+         board.botMove();
+         board.drawBoard();
+         board.userMove();
+         decision = "NULL";
+//      }
     }
-  /*    }     */
   }
   return 0;
 }
