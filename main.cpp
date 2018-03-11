@@ -36,7 +36,10 @@ int main() {
          decision = "NULL";
       }
     }
+    board.showResult();
+    std::cout << "Would you like to play again? Type 'yes' if you do, or enter anything else if you don't." << std::endl;
+    std::cin >> decision;
+    board.resetBoard();
   }
-
   return 0;
 }
