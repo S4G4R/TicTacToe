@@ -10,6 +10,7 @@ private:
   char bot;
   int userChoice;
   bool pickStart;
+  int x_lastplay, y_lastplay;
 public:
   ticTac();
   int getStart();
@@ -18,6 +19,10 @@ public:
   void printGreeting();
   void userSelection();
   void botThink();
+  int getLastX();
+  int getLastY();
+  void botMove(int,int);
+  void randomPick();
   void checkFull(int,int);
   void drawBoard();
   ~ticTac();
