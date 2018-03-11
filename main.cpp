@@ -1,6 +1,6 @@
-//TODO: #include "tictactoe.hpp"
-//Remove below line
-#include "tictactoe.cpp"
+#include "tictactoe.hpp"
+
+#include <iostream>
 
 int main() {
   ticTac board;
