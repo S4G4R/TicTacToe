@@ -21,9 +21,10 @@ public:
   void botThink();
   int getLastX();
   int getLastY();
-  void botMove(int,int);
+  void botMove();
   void randomPick();
   void checkFull(int,int);
+  bool winCondition();
   void drawBoard();
   ~ticTac();
 };
