@@ -6,8 +6,9 @@
 class ticTac {
 private:
   std::string board[3][3];
-  char user;
-  char bot;
+  std::string user;
+  std::string bot;
+  std::string winner;
   int userChoice;
   bool pickStart;
   int x_lastplay, y_lastplay;
