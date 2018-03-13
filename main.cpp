@@ -12,28 +12,26 @@ int main() {
     if (board.getStart()) {
       std::cout << "You play first! Good luck." << '\n';
       board.drawBoard();
-      while(!board.boardFull()) {
+      while(true) {
         board.userMove();
         board.drawBoard();
-        if(board.winCondition()) break;
+        if(board.winCondition() || board.boardFull()) break;
         board.botThink();
         board.botMove();
         board.drawBoard();
-        if(board.winCondition()) break;
-        decision = "NULL";
+        if(board.winCondition() || board.boardFull()) break;
       }
     } else {
        std::cout << "Bot plays first! Good luck." << '\n';
        board.drawBoard();
-       while(!board.boardFull()) {
+       while(true) {
          board.botThink();
          board.botMove();
          board.drawBoard();
-         if(board.winCondition()) break;
+         if(board.winCondition() || board.boardFull()) break;
          board.userMove();
          board.drawBoard();
-         if(board.winCondition()) break;
-         decision = "NULL";
+         if(board.winCondition() || board.boardFull()) break;
       }
     }
     board.showResult();
