@@ -17,19 +17,17 @@ void ticTac::initBoard() {
 
 void ticTac::printGreeting() {
   std::cout << "Hello user. Welcome to ticTacToe. Pick one of the following :" << std::endl;
-  std::cout << "1 - Single Player" << std::endl;
-  std::cout << "2 - Two Players" << std::endl;
+  std::cout << "1 - O, 2 - X" << std::endl;
 }
 
 void ticTac::userSelection() {
-  int userChoice;
   std::cin >> userChoice;
   if (userChoice==1) {
-    user1='O';
+    user='O';
     bot='X';
     pickStart=1;
   } else if (userChoice==2) {
-    user1='X';
+    user='X';
     bot='O';
     pickStart=0;
   } else {
@@ -40,27 +38,8 @@ void ticTac::userSelection() {
   }
 }
 
-void ticTac::pickMode() {
-  int mode;
-  std::cin >> mode;
-  if (mode==1) {
-    gamemode=0;
-  } else if (mode==2) {
-    gamemode=1;
-  } else {
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-    std::cout << "Wrong Selection. Try Again." << std::endl;
-    pickMode();
-  }
-}
-
 int ticTac::getStart() {
   return pickStart;
-}
-
-int ticTac::getMode() {
-  return gamemode;
 }
 
 void ticTac::drawBoard() {
@@ -89,7 +68,7 @@ void ticTac::userMove() {
   std::cin >> y;
   if ((x==1 || x==2 || x==3) && (y==1 || y==2 || y==3)) {
     checkFull(x,y);
-    board[x-1][y-1]=user1;
+    board[x-1][y-1]=user;
     x_lastplay=x-1;
     y_lastplay=y-1;
   } else {
@@ -204,7 +183,7 @@ bool ticTac::boardFull() {
 }
 
 void ticTac::showResult() {
-  if (winner==user1) {
+  if (winner==user) {
     std::cout << "You win! Congratulations." << std::endl;
   } else if (winner==bot) {
     std::cout << "Bot wins! Better luck next time." << std::endl;
