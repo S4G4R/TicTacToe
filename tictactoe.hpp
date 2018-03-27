@@ -6,10 +6,11 @@
 class ticTac {
 private:
   std::string board[3][3];
-  std::string user;
+  std::string user1;
+  std::string user2;
   std::string bot;
   std::string winner;
-  int userChoice;
+  bool gamemode;
   bool pickStart;
   int x_lastplay, y_lastplay;
 public:
@@ -19,6 +20,8 @@ public:
   void userMove();
   void printGreeting();
   void userSelection();
+  void pickMode();
+  int getMode();
   void botThink();
   int getLastX();
   int getLastY();
