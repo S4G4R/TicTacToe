@@ -11,6 +11,7 @@ private:
   std::string bot;
   std::string winner;
   bool gamemode;
+  bool turn;
   bool pickStart;
   int x_lastplay, y_lastplay;
 public:
@@ -18,6 +19,8 @@ public:
   int getStart();
   void initBoard();
   void userMove();
+  void setUsers();
+  void setTurn(int);
   void printGreeting();
   void userSelection();
   void pickMode();

@@ -21,6 +21,8 @@ void ticTac::printGreeting() {
   std::cout << "2 - Two Players" << std::endl;
 }
 
+
+
 void ticTac::userSelection() {
   int userChoice;
   std::cin >> userChoice;
@@ -83,13 +85,20 @@ void ticTac::drawBoard() {
 }
 
 void ticTac::userMove() {
+  if (!gamemode) {
+    std::cout << "User " << turn+1 << ", ";
+  }
   std::cout << "Type a row (1, 2 or 3), and a column (1, 2 or 3)." << std::endl;
   int x, y;
   std::cin >> x;
   std::cin >> y;
   if ((x==1 || x==2 || x==3) && (y==1 || y==2 || y==3)) {
     checkFull(x,y);
-    board[x-1][y-1]=user1;
+    if(turn==0) {
+      board[x-1][y-1]=user1;
+    } else {
+      board[x-1][y-1]=user2;
+    }
     x_lastplay=x-1;
     y_lastplay=y-1;
   } else {
@@ -98,6 +107,16 @@ void ticTac::userMove() {
     std::cout << "Please enter a correct row and column!" << std::endl;
     userMove();
   }
+}
+
+void ticTac::setUsers() {
+  user1="X";
+  user2="O";
+}
+
+void ticTac::setTurn(int x) {
+  if(x==1) turn=0;
+  if(x==2) turn=1;
 }
 
 void ticTac::botThink() {
@@ -204,12 +223,22 @@ bool ticTac::boardFull() {
 }
 
 void ticTac::showResult() {
-  if (winner==user1) {
-    std::cout << "You win! Congratulations." << std::endl;
-  } else if (winner==bot) {
-    std::cout << "Bot wins! Better luck next time." << std::endl;
+  if(!gamemode) {
+    if (winner==user1) {
+      std::cout << "User 1 wins! Congratulations." << std::endl;
+    } else if (winner==user2) {
+      std::cout << "User 2 wins! Congratulations." << std::endl;
+    } else {
+      std::cout << "It's a tie!" << std::endl;
+    }
   } else {
-    std::cout << "It's a draw!" << std::endl;
+    if (winner==user1) {
+      std::cout << "You win! Congratulations." << std::endl;
+    } else if (winner==bot) {
+      std::cout << "Bot wins! Better luck next time." << std::endl;
+    } else {
+      std::cout << "It's a tie!" << std::endl;
+    }
   }
 }
 

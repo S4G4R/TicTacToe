@@ -10,7 +10,19 @@ int main() {
     board.printGreeting();
     board.pickMode();
     if (!board.getMode()) {
-      // Single Player
+      board.drawBoard();
+      board.setUsers();
+      std::cout << "User 1, play first!" << std::endl;
+      while(true) {
+        board.setTurn(1);
+        board.userMove();
+        board.drawBoard();
+        if(board.winCondition() || board.boardFull()) break;
+        board.setTurn(2);
+        board.userMove();
+        board.drawBoard();
+        if(board.winCondition() || board.boardFull()) break;
+      }
     } else {
       board.userSelection();
       if (board.getStart()) {
