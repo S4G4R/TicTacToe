@@ -17,17 +17,21 @@ void ticTac::initBoard() {
 
 void ticTac::printGreeting() {
   std::cout << "Hello user. Welcome to ticTacToe. Pick one of the following :" << std::endl;
-  std::cout << "1 - O, 2 - X" << std::endl;
+  std::cout << "1 - Single Player" << std::endl;
+  std::cout << "2 - Two Players" << std::endl;
 }
 
+
+
 void ticTac::userSelection() {
+  int userChoice;
   std::cin >> userChoice;
   if (userChoice==1) {
-    user='O';
+    user1='O';
     bot='X';
     pickStart=1;
   } else if (userChoice==2) {
-    user='X';
+    user1='X';
     bot='O';
     pickStart=0;
   } else {
@@ -38,8 +42,27 @@ void ticTac::userSelection() {
   }
 }
 
+void ticTac::pickMode() {
+  int mode;
+  std::cin >> mode;
+  if (mode==1) {
+    gamemode=0;
+  } else if (mode==2) {
+    gamemode=1;
+  } else {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+    std::cout << "Wrong Selection. Try Again." << std::endl;
+    pickMode();
+  }
+}
+
 int ticTac::getStart() {
   return pickStart;
+}
+
+int ticTac::getMode() {
+  return gamemode;
 }
 
 void ticTac::drawBoard() {
@@ -62,13 +85,20 @@ void ticTac::drawBoard() {
 }
 
 void ticTac::userMove() {
+  if (!gamemode) {
+    std::cout << "User " << turn+1 << ", ";
+  }
   std::cout << "Type a row (1, 2 or 3), and a column (1, 2 or 3)." << std::endl;
   int x, y;
   std::cin >> x;
   std::cin >> y;
   if ((x==1 || x==2 || x==3) && (y==1 || y==2 || y==3)) {
     checkFull(x,y);
-    board[x-1][y-1]=user;
+    if(turn==0) {
+      board[x-1][y-1]=user1;
+    } else {
+      board[x-1][y-1]=user2;
+    }
     x_lastplay=x-1;
     y_lastplay=y-1;
   } else {
@@ -77,6 +107,16 @@ void ticTac::userMove() {
     std::cout << "Please enter a correct row and column!" << std::endl;
     userMove();
   }
+}
+
+void ticTac::setUsers() {
+  user1="X";
+  user2="O";
+}
+
+void ticTac::setTurn(int x) {
+  if(x==1) turn=0;
+  if(x==2) turn=1;
 }
 
 void ticTac::botThink() {
@@ -183,12 +223,22 @@ bool ticTac::boardFull() {
 }
 
 void ticTac::showResult() {
-  if (winner==user) {
-    std::cout << "You win! Congratulations." << std::endl;
-  } else if (winner==bot) {
-    std::cout << "Bot wins! Better luck next time." << std::endl;
+  if(!gamemode) {
+    if (winner==user1) {
+      std::cout << "User 1 wins! Congratulations." << std::endl;
+    } else if (winner==user2) {
+      std::cout << "User 2 wins! Congratulations." << std::endl;
+    } else {
+      std::cout << "It's a tie!" << std::endl;
+    }
   } else {
-    std::cout << "It's a draw!" << std::endl;
+    if (winner==user1) {
+      std::cout << "You win! Congratulations." << std::endl;
+    } else if (winner==bot) {
+      std::cout << "Bot wins! Better luck next time." << std::endl;
+    } else {
+      std::cout << "It's a tie!" << std::endl;
+    }
   }
 }
 
