@@ -1,3 +1,4 @@
 makefile
 main
 .DS_STORE
+*.o
