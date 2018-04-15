@@ -13,3 +13,8 @@ Added 2 player mode.
 # V.2.1
 
 Fixed some bugs.
+
+# V.2.2
+
+Fixed more bugs.
+Added screen clearing after every turn.
