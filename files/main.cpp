@@ -10,6 +10,7 @@ int main() {
     board.clearScreen();
     board.printGreeting();
     board.pickMode();
+    board.clearScreen();
     if (board.getMode()) {
       board.drawBoard();
       board.setUsers();
