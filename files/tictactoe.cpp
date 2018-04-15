@@ -24,6 +24,7 @@ void ticTac::printGreeting() {
 
 
 void ticTac::userSelection() {
+  std::cout << "Enter 1 for 'O' or 2 for 'X'!" << '\n';
   int userChoice;
   std::cin >> userChoice;
   if (userChoice==1) {
