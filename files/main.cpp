@@ -9,7 +9,7 @@ int main() {
   while (decision == "yes" || decision == "YES" || decision == "Yes") {
     board.printGreeting();
     board.pickMode();
-    if (!board.getMode()) {
+    if (board.getMode()) {
       board.drawBoard();
       board.setUsers();
       std::cout << "User 1, play first!" << std::endl;
