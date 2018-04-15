@@ -9,3 +9,7 @@ Fix bug that would not allow game to finish when there was a draw in certain con
 # V.2.0
 
 Added 2 player mode.
+
+# V.2.1
+
+Fixed some bugs.
