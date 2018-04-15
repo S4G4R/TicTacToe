@@ -21,7 +21,9 @@ void ticTac::printGreeting() {
   std::cout << "2 - Two Players" << std::endl;
 }
 
-
+void ticTac::clearScreen() {
+  system("clear");
+}
 
 void ticTac::userSelection() {
   std::cout << "Enter 1 for 'O' or 2 for 'X'!" << '\n';
@@ -94,14 +96,18 @@ void ticTac::userMove() {
   std::cin >> x;
   std::cin >> y;
   if ((x==1 || x==2 || x==3) && (y==1 || y==2 || y==3)) {
-    checkFull(x,y);
-    if(turn==0) {
-      board[x-1][y-1]=user1;
+    if(checkFull(x,y)) {
+      std::cout << "That position is already filled. Please try again." << std::endl;
+      userMove();
     } else {
-      board[x-1][y-1]=user2;
-    }
-    x_lastplay=x-1;
-    y_lastplay=y-1;
+      if(turn==0) {
+        board[x-1][y-1]=user1;
+      } else {
+        board[x-1][y-1]=user2;
+      }
+      x_lastplay=x-1;
+      y_lastplay=y-1;
+    }    
   } else {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
@@ -135,12 +141,11 @@ void ticTac::botThink() {
   sleep(2);
 }
 
-void ticTac::checkFull(int x, int y) {
+bool ticTac::checkFull(int x, int y) {
   if(board[x-1][y-1] != " ") {
-    std::cout << "That position is already filled. Please try again." << std::endl;
-    userMove();
+    return true;
   } else {
-    return;
+    return false;
   }
 }
 

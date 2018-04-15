@@ -7,19 +7,23 @@ int main() {
   std::string decision;
   decision = "yes";
   while (decision == "yes" || decision == "YES" || decision == "Yes") {
+    board.clearScreen();
     board.printGreeting();
     board.pickMode();
     if (board.getMode()) {
       board.drawBoard();
       board.setUsers();
-      std::cout << "User 1, play first!" << std::endl;
       while(true) {
+        std::cout << "User 1, play :" << std::endl;
         board.setTurn(1);
         board.userMove();
+        board.clearScreen();
         board.drawBoard();
         if(board.winCondition() || board.boardFull()) break;
+        std::cout << "User 2, play :" << std::endl;
         board.setTurn(2);
         board.userMove();
+        board.clearScreen();
         board.drawBoard();
         if(board.winCondition() || board.boardFull()) break;
       }
@@ -30,10 +34,12 @@ int main() {
         board.drawBoard();
         while(true) {
           board.userMove();
+          board.clearScreen();
           board.drawBoard();
           if(board.winCondition() || board.boardFull()) break;
           board.botThink();
           board.botMove();
+          board.clearScreen();
           board.drawBoard();
           if(board.winCondition() || board.boardFull()) break;
         }
@@ -43,9 +49,11 @@ int main() {
          while(true) {
            board.botThink();
            board.botMove();
+           board.clearScreen();
            board.drawBoard();
            if(board.winCondition() || board.boardFull()) break;
            board.userMove();
+           board.clearScreen();
            board.drawBoard();
            if(board.winCondition() || board.boardFull()) break;
         }

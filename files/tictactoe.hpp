@@ -17,6 +17,7 @@ private:
 public:
   ticTac();
   int getStart();
+  void clearScreen();
   void initBoard();
   void userMove();
   void setUsers();
@@ -30,7 +31,7 @@ public:
   int getLastY();
   void botMove();
   void randomPick();
-  void checkFull(int,int);
+  bool checkFull(int,int);
   bool winCondition();
   void drawBoard();
   bool boardFull();
