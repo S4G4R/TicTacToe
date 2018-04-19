@@ -18,3 +18,7 @@ Fixed some bugs.
 
 Fixed more bugs.
 Added screen clearing after every turn.
+
+# V.2.3
+
+Changed message saying 'User 2 wins!' to 'It's a draw' when drawing with a bot.
