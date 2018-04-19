@@ -107,7 +107,7 @@ void ticTac::userMove() {
       }
       x_lastplay=x-1;
       y_lastplay=y-1;
-    }    
+    }
   } else {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
@@ -229,7 +229,7 @@ bool ticTac::boardFull() {
 }
 
 void ticTac::showResult() {
-  if(!gamemode) {
+  if(gamemode) {
     if (winner==user1) {
       std::cout << "User 1 wins! Congratulations." << std::endl;
     } else if (winner==user2) {
