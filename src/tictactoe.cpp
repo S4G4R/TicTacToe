@@ -3,10 +3,12 @@
 #include <random>
 #include <iostream>
 
+//Construction
 ticTac::ticTac() {
   initBoard();
 }
 
+//Initializes board to blank
 void ticTac::initBoard() {
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
@@ -15,16 +17,19 @@ void ticTac::initBoard() {
   }
 }
 
+//Greets the user
 void ticTac::printGreeting() {
   std::cout << "Hello user. Welcome to ticTacToe. Pick one of the following :" << std::endl;
   std::cout << "1 - Single Player" << std::endl;
   std::cout << "2 - Two Players" << std::endl;
 }
 
+//Clears screen
 void ticTac::clearScreen() {
   system("clear");
 }
 
+//User picks 'O' or 'X'
 void ticTac::userSelection() {
   std::cout << "Enter 1 for 'O' or 2 for 'X'!" << '\n';
   int userChoice;
@@ -45,6 +50,7 @@ void ticTac::userSelection() {
   }
 }
 
+//SinglePlayer or Multiplayer selection
 void ticTac::pickMode() {
   int mode;
   std::cin >> mode;
@@ -60,14 +66,17 @@ void ticTac::pickMode() {
   }
 }
 
+//Returns person who starts first
 int ticTac::getStart() {
   return pickStart;
 }
 
+//Returns game mode
 int ticTac::getMode() {
   return gamemode;
 }
 
+//Draws the board
 void ticTac::drawBoard() {
   for (int i = 0; i < 3; i++) {
     std::cout << " --- --- --- " << std::endl;
@@ -87,6 +96,7 @@ void ticTac::drawBoard() {
   std::cout << std::endl;
 }
 
+// User plays
 void ticTac::userMove() {
   if (!gamemode) {
     std::cout << "User " << turn+1 << ", ";
@@ -116,16 +126,19 @@ void ticTac::userMove() {
   }
 }
 
+//Sets corresponding symbols
 void ticTac::setUsers() {
   user1="X";
   user2="O";
 }
 
+//Checks whose turn it is
 void ticTac::setTurn(int x) {
   if(x==1) turn=0;
   if(x==2) turn=1;
 }
 
+//Displays bot thinking dialogue
 void ticTac::botThink() {
   std::cout << "Bot is thinking";
   std::cout.flush();
@@ -141,6 +154,7 @@ void ticTac::botThink() {
   sleep(2);
 }
 
+//Checks whether board is true, returns true if it is
 bool ticTac::checkFull(int x, int y) {
   if(board[x-1][y-1] != " ") {
     return true;
@@ -149,6 +163,7 @@ bool ticTac::checkFull(int x, int y) {
   }
 }
 
+//Random spot is assigned for bot
 void ticTac::randomPick() {
   std::random_device random_device;
   std::mt19937 engine{random_device()};
@@ -163,6 +178,7 @@ void ticTac::randomPick() {
   }
 }
 
+//Bot picks spot
 void ticTac::botMove() {
   int row=getLastX();
   int col=getLastY();
@@ -182,6 +198,7 @@ void ticTac::botMove() {
   return;
 }
 
+//Checks if anyone has won yet
 bool ticTac::winCondition() {
   if (board[0][0]==board[0][1] && board[0][0]==board[0][2] && board[0][0]!=" ") {
     winner=board[0][0];
@@ -212,6 +229,7 @@ bool ticTac::winCondition() {
   }
 }
 
+//Checks whether the board is full or not
 bool ticTac::boardFull() {
   int count=0;
   for (int i = 0; i < 3; i++) {
@@ -228,6 +246,7 @@ bool ticTac::boardFull() {
   }
 }
 
+//Shows end result
 void ticTac::showResult() {
   if(gamemode) {
     if (winner==user1) {
@@ -248,18 +267,12 @@ void ticTac::showResult() {
   }
 }
 
-void ticTac::resetBoard() {
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j < 3; j++) {
-      board[i][j] = " ";
-    }
-  }
-}
-
+//Gets x coord from previous move
 int ticTac::getLastX() {
   return x_lastplay;
 }
 
+//Gets y coord from previous move
 int ticTac::getLastY() {
   return y_lastplay;
 }
