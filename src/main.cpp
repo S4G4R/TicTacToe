@@ -63,7 +63,7 @@ int main() {
     board.showResult();
     std::cout << "Would you like to play again? Type 'yes' if you do, or enter anything else if you don't." << std::endl;
     std::cin >> decision;
-    board.resetBoard();
+    board.initBoard();
   }
   return 0;
 }
