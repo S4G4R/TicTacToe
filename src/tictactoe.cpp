@@ -154,7 +154,7 @@ void ticTac::botThink() {
   sleep(2);
 }
 
-//Checks whether board is true, returns true if it is
+//Checks whether chosen spot is filled, returns true if it is
 bool ticTac::checkFull(int x, int y) {
   if(board[x-1][y-1] != " ") {
     return true;
